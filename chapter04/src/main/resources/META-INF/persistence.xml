@@ -2,8 +2,10 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.2"
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
     <persistence-unit name="my-persistence-unit">
-        <description>Chapter02</description>
+        <description>Chapter04</description>
         <class>ru.shabarov.hibernate.model.Item</class>
+        <class>ru.shabarov.hibernate.model.Bid</class>
+        <class>ru.shabarov.hibernate.model.ItemBidSummary</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
 
         <properties>
@@ -16,7 +18,7 @@
             <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.use_sql_comments" value="true"/>
-            <property name= "hibernate.show_sql" value ="true" />
+            <property name="hibernate.show_sql" value ="true" />
 
         </properties>
     </persistence-unit>
