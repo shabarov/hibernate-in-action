@@ -1,0 +1,36 @@
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.2"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+    <persistence-unit name="my-persistence-unit">
+        <description>Chapter04</description>
+        <class>ru.shabarov.hibernate.model.tableperclass.join.JoinBankAccont</class>
+        <class>ru.shabarov.hibernate.model.tableperclass.join.JoinBillingDetails</class>
+        <class>ru.shabarov.hibernate.model.tableperclass.join.JoinCreditCard</class>
+        <class>ru.shabarov.hibernate.model.tableperclass.poly.CreditCard</class>
+        <class>ru.shabarov.hibernate.model.tableperclass.poly.BankAccont</class>
+        <class>ru.shabarov.hibernate.model.tableperclass.poly.BillingDetails</class>
+        <class>ru.shabarov.hibernate.model.singletable.SingleCreditCard</class>
+        <class>ru.shabarov.hibernate.model.singletable.SingleBankAccont</class>
+        <class>ru.shabarov.hibernate.model.singletable.SingleBillingDetails</class>
+        <class>ru.shabarov.hibernate.model.joined.JoinedCreditCard</class>
+        <class>ru.shabarov.hibernate.model.joined.JoinedBankAccont</class>
+        <class>ru.shabarov.hibernate.model.joined.JoinedBillingDetails</class>
+
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+
+        <properties>
+            <!-- database connection -->
+            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1" />
+<!--            <property name="javax.persistence.jdbc.user" value="" />-->
+<!--            <property name="javax.persistence.jdbc.password" value="" />-->
+            <property name="dialect" value="org.hibernate.dialect.H2Dialect" />
+<!--            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>-->
+            <property name="javax.persistence.schema-generation.database.action" value="update"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.use_sql_comments" value="true"/>
+            <property name="hibernate.show_sql" value ="true" />
+
+        </properties>
+    </persistence-unit>
+</persistence>
