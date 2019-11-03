@@ -4,8 +4,13 @@
     <persistence-unit name="my-persistence-unit">
         <description>Chapter04</description>
         <class>ru.shabarov.hibernate.model.composition.Item</class>
-        <class>ru.shabarov.hibernate.model.Bid</class>
-        <class>ru.shabarov.hibernate.model.ItemBidSummary</class>
+        <class>ru.shabarov.hibernate.model.composition.Item2</class>
+        <class>ru.shabarov.hibernate.model.composition.Item3</class>
+        <class>ru.shabarov.hibernate.model.composition.Item4</class>
+        <class>ru.shabarov.hibernate.model.composition.Item5</class>
+        <class>ru.shabarov.hibernate.model.manytoone.Item6</class>
+        <class>ru.shabarov.hibernate.model.manytoone.Bid</class>
+
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
 
         <properties>
@@ -15,7 +20,8 @@
 <!--            <property name="javax.persistence.jdbc.user" value="" />-->
 <!--            <property name="javax.persistence.jdbc.password" value="" />-->
             <property name="dialect" value="org.hibernate.dialect.H2Dialect" />
-            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+<!--            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>-->
+            <property name="javax.persistence.schema-generation.database.action" value="update"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.use_sql_comments" value="true"/>
             <property name="hibernate.show_sql" value ="true" />

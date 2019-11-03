@@ -3,9 +3,16 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
     <persistence-unit name="my-persistence-unit">
         <description>Chapter04</description>
-        <class>ru.shabarov.hibernate.model.composition.Item</class>
-        <class>ru.shabarov.hibernate.model.Bid</class>
-        <class>ru.shabarov.hibernate.model.ItemBidSummary</class>
+        <class>ru.shabarov.hibernate.model.User</class>
+        <class>ru.shabarov.hibernate.model.Address</class>
+        <class>ru.shabarov.hibernate.model.jointable.Item</class>
+        <class>ru.shabarov.hibernate.model.jointable.Shipment</class>
+        <class>ru.shabarov.hibernate.model.manytomany.Category</class>
+        <class>ru.shabarov.hibernate.model.manytomany.Item2</class>
+        <class>ru.shabarov.hibernate.model.manytomany.CategorizedItem</class>
+        <class>ru.shabarov.hibernate.model.manytomany.Item3</class>
+        <class>ru.shabarov.hibernate.model.manytomany.Category2</class>
+
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
 
         <properties>
@@ -15,7 +22,8 @@
 <!--            <property name="javax.persistence.jdbc.user" value="" />-->
 <!--            <property name="javax.persistence.jdbc.password" value="" />-->
             <property name="dialect" value="org.hibernate.dialect.H2Dialect" />
-            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+<!--            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>-->
+            <property name="javax.persistence.schema-generation.database.action" value="update"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.use_sql_comments" value="true"/>
             <property name="hibernate.show_sql" value ="true" />

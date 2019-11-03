@@ -65,9 +65,9 @@ public class Main {
             em.persist(joinedBankAccont);
             em.flush();
 
-            List bds = em.createQuery("select bd from JoinBillingDetails bd").getResultList();
-            bds = em.createQuery("select bd from SingleBillingDetails bd").getResultList();
-            bds = em.createQuery("select bd from JoinedBillingDetails bd").getResultList();
+            em.createQuery("select bd from JoinBillingDetails bd").getResultList();
+            em.createQuery("select bd from SingleBillingDetails bd").getResultList();
+            em.createQuery("select bd from JoinedBillingDetails bd").getResultList();
         });
 
     }
