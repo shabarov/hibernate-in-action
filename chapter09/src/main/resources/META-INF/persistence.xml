@@ -1,0 +1,32 @@
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.2"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+    <persistence-unit name="my-persistence-unit">
+        <description>Chapter09</description>
+        <class>ru.shabarov.hibernate.model.User</class>
+
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+
+        <properties>
+            <!-- database connection -->
+            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1" />
+<!--            <property name="javax.persistence.jdbc.user" value="" />-->
+<!--            <property name="javax.persistence.jdbc.password" value="" />-->
+            <property name="dialect" value="org.hibernate.dialect.H2Dialect" />
+            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+<!--            <property name="javax.persistence.schema-generation.database.action" value="update"/>-->
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.use_sql_comments" value="true"/>
+            <property name="hibernate.show_sql" value ="true" />
+
+<!--            <property name="hibernate.0hbm2ddl.import_files_sql_extractor" value="org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor"/>-->
+            <property name="javax.persistence.schema-generation.create-source" value="script-then-metadata"/>
+            <property name="javax.persistence.schema-generation.create-script-source" value="META-INF/scripts/create-script.sql"/>
+<!--            <property name="javax.persistence.schema-generation.drop-source" value="script"/>-->
+<!--            <property name="javax.persistence.schema-generation.drop-script-source" value="META-INF/scripts/drop-script.sql"/>-->
+            <property name="javax.persistence.sql-load-script-source" value="META-INF/scripts/load-script.sql"/>
+
+        </properties>
+    </persistence-unit>
+</persistence>

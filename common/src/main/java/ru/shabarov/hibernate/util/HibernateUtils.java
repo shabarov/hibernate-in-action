@@ -3,41 +3,42 @@ package ru.shabarov.hibernate.util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import javax.persistence.*;
 
 public final class HibernateUtils {
 
     private final static Logger logger = LoggerFactory.getLogger(HibernateUtils.class);
 
+    private final static EntityManagerFactory entityManagerFactory =
+            Persistence.createEntityManagerFactory("my-persistence-unit");
+
+//    @PersistenceContext(unitName = "my-persistence-unit", type = PersistenceContextType.EXTENDED)
+//    private EntityManager entityManager;
+
     private HibernateUtils() {
-
-    }
-
-    public static EntityManagerFactory getEntityManagerFactory() {
-        return Persistence.createEntityManagerFactory("my-persistence-unit");
     }
 
     public static EntityManager getEntityManager() {
-        return getEntityManagerFactory().createEntityManager();
+        return entityManagerFactory.createEntityManager();
     }
 
     public static void doTransactional(HibernateAction callback) {
         EntityManager entityManager = null;
+        EntityTransaction transaction = null;
         try {
             entityManager = getEntityManager();
-            entityManager.getTransaction().begin();
+            transaction = entityManager.getTransaction();
+            transaction.begin();
             callback.apply(entityManager);
-            entityManager.getTransaction().commit();
+            transaction.commit();
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
-            if (entityManager != null) {
-                entityManager.getTransaction().rollback();
+            if (transaction != null && transaction.isActive()) {
+                transaction.rollback();
             }
             throw new RuntimeException(e);
         } finally {
-            if (entityManager != null) {
+            if (entityManager != null && entityManager.isOpen()) {
                 entityManager.close();
             }
         }

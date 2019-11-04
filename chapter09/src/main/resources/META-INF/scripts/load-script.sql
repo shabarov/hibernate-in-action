@@ -1,0 +1,1 @@
+insert into Persons (ID, LastName, FirstName, Age) values (1, 'Mike', 'S', 32);
