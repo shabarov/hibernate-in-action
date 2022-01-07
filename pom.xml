@@ -30,7 +30,7 @@
         <hibernate.version>5.4.4.Final</hibernate.version>
         <ee.version>8.0</ee.version>
         <slf4j.version>1.7.13</slf4j.version>
-        <h2.version>1.4.193</h2.version>
+        <h2.version>2.0.206</h2.version>
     </properties>
 
     <dependencyManagement>
